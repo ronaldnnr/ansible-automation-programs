@@ -1,0 +1,8 @@
+---
+- include: awscli.yml
+- include: chrome.yml
+- include: docker.yml
+- include: skype.yml
+- include: spotify.yml
+- include: terraform.yml
+- include: zsh.yml
