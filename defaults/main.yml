@@ -1,0 +1,72 @@
+---
+# Global
+usuario: 
+distribution: focal
+
+# Terraform
+terraform_version: 0.14.9
+terraform_url_download: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+terraform_install_dir: /usr/local/bin/
+terraform_download_dir: /tmp/terraform
+
+# Postman
+postman_url_download: https://dl.pstmn.io/download/latest/linux64
+postman_install_dir: /opt/Postman
+postman_download_dir: /tmp/Postman
+
+# Vscode
+visual_studio_code_version: ''
+visual_studio_code_build: stable
+visual_studio_code_mirror: https://packages.microsoft.com
+
+# Docker
+docker_edition: ce
+docker_package: "docker-{{ docker_edition }}"
+docker_package_state: present
+docker_service_state: started
+docker_service_enabled: true
+docker_restart_handler_state: restarted
+docker_install_compose: true
+docker_compose_version: 1.25.4
+docker_compose_path: /usr/local/bin/docker-compose
+docker_apt_release_channel: stable
+docker_apt_repository: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
+docker_apt_ignore_key_error: true
+docker_users: ["{{ usuario }}"]
+
+# AWS cli
+aws_cli_download_dir: /tmp/awscli
+aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+aws_cli_home: "/home/{{ usuario }}"
+aws_output_format: json
+aws_region: us-east-1
+aws_access_key_id:
+aws_secret_access_key:
+
+# Zsh
+oh_my_zsh_url_download: https://github.com/robbyrussell/oh-my-zsh
+oh_my_zsh_theme: robbyrussell
+oh_my_zsh_export: "/home/{{ usuario }}/.oh-my-zsh"
+oh_my_zsh_plugins: git zsh-autosuggestions #zsh-syntax-highlighting
+oh_my_zsh_custom_dir_plugins: /home/{{ usuario }}/.oh-my-zsh/custom/plugins/
+oh_my_zsh_custom_plugins:
+  #- repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+  #  dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-syntax-highlighting"
+  - repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-autosuggestions"
+oh_my_zsh_extra: |-
+  # Config tilix
+  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte-2.91.sh
+  fi
+  
+  # Alias
+  alias m="mysql -u root -p"
+  alias atualizar="apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
+  
+  export PATH=~/.local/bin:$PATH
+# Packer
+packer_version: 1.7.2
+packer_download_dir: /tmp/packer
+packer_url_download: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
+packer_install_dir: /usr/local/bin/
