@@ -1,0 +1,43 @@
+---
+
+- name: Chrome - Add apt key (Ubuntu)
+  shell: wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Chrome - Install repo (Ubuntu)
+  become: yes
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    filename: google-chrome
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Chrome - Add yum repository (CentOS)
+  become: yes
+  ansible.builtin.copy:
+    content: |
+      [google-chrome]
+      name=google-chrome
+      baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+    dest: /etc/yum.repos.d/google-chrome.repo
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution == 'CentOS'
+
+- name: Chrome - Install (Ubuntu)
+  apt:
+    name: google-chrome-stable
+    state: present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Chrome - Install (CentOS)
+  become: yes
+  ansible.builtin.yum:
+    name: google-chrome-stable
+    state: present
+  when: ansible_distribution == 'CentOS'

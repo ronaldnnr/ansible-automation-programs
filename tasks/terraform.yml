@@ -7,7 +7,7 @@
 
 - name: Terraform - Download.
   get_url:
-    url: "{{ terraform_url_download }}"
+    url: "{{ terraform_url_down }}"
     dest: "{{ terraform_down_dir }}/{{ terraform_name }}"
     mode: u=rw,go=r
 
@@ -23,7 +23,7 @@
 - name: Terraform - Unzip.
   become: yes
   unarchive:
-    src: "{{ terraform_download_dir }}/{{ terraform_name }}"
+    src: "{{ terraform_down_dir }}/{{ terraform_name }}"
     remote_src: yes
     dest: "{{ terraform_down_dir }}"
     
