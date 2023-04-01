@@ -4,7 +4,7 @@ usuario:
 distribution: focal
 
 # Terraform
-terraform_version: 0.14.9
+terraform_version: 1.4.4
 terraform_url_download: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
 terraform_install_dir: /usr/local/bin/
 terraform_download_dir: /tmp/terraform
