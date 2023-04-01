@@ -65,8 +65,3 @@ oh_my_zsh_extra: |-
   alias atualizar="apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
   
   export PATH=~/.local/bin:$PATH
-# Packer
-packer_version: 1.7.2
-packer_download_dir: /tmp/packer
-packer_url_download: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
-packer_install_dir: /usr/local/bin/
