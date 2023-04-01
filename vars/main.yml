@@ -1,6 +1,5 @@
 ---
-postman_filename: Postman-linux-x64-latest.tar.gz
-aws_cli_filename: awscliv2.zip
-terraform_filename: terraform_{{ terraform_version }}_linux_amd64.zip
-skype_filename: skypeforlinux-64.deb
-packer_filename: packer_{{ packer_version }}_linux_amd64.zip
+postman_name: Postman-linux-x64-latest.tar.gz
+aws_cli_name: awscliv2.zip
+terraform_name: terraform_{{ terraform_version }}_linux_amd64.zip
+skype_name: skypeforlinux-64.deb

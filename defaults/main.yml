@@ -5,9 +5,9 @@ distribution: focal
 
 # Terraform
 terraform_version: 1.4.4
-terraform_url_download: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-terraform_install_dir: /usr/local/bin/
-terraform_download_dir: /tmp/terraform
+terraform_url_down: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+terraform_install_directory: /usr/local/bin/
+terraform_down_dir: /tmp/terraform
 
 # Postman
 postman_url_download: https://dl.pstmn.io/download/latest/linux64
@@ -65,3 +65,7 @@ oh_my_zsh_extra: |-
   alias atualizar="apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
   
   export PATH=~/.local/bin:$PATH
+
+# Skype
+skype_url_down: https://go.skype.com/skypeforlinux-64.deb
+skype_download_dir: /tmp/skype
