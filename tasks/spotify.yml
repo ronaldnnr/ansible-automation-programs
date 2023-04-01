@@ -1,0 +1,16 @@
+---
+- name: Spotify - Add apt key.
+  shell: curl -sS {{ spotify_apt_key_url }} | sudo apt-key add -
+
+- name: Spotify - Install repo.
+  become: yes
+  apt_repository:
+    repo: deb {{ spotify_repository_url }} {{ spotify_repository_channel }}
+    filename: spotify
+    state: present
+    update_cache: yes
+
+- name: Spotify - Install.
+  apt:
+    name: {{ spotify_package_name }}
+    state: present
