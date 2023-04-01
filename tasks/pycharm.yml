@@ -1,0 +1,29 @@
+- name: Check if PyCharm is already installed
+  shell: "dpkg-query -W -f='${Version}' pycharm-{{ pycharm_edition }} || true"
+  register: pycharm_installed_version
+  changed_when: false
+
+- name: Install PyCharm if not installed or if installed version is not the desired one
+  block:
+    - name: Install dependencies
+      apt:
+        name:
+          - wget
+          - gnupg2
+          - ca-certificates
+        state: present
+
+    - name: Add JetBrains repository key
+      shell: wget -q -O - https://packages.jetbrains.com/keys/jetbrains-public.asc | sudo apt-key add -
+
+    - name: Add JetBrains repository
+      apt_repository:
+        repo: "deb http://packages.jetbrains.com/debian/ {{ ansible_distribution_release }} main"
+        state: present
+        update_cache: yes
+
+    - name: Install PyCharm {{ pycharm_edition.capitalize() }} Edition
+      apt:
+        name: "pycharm-{{ pycharm_edition }}={{ pycharm_version }}*"
+        state: present
+  when: pycharm_installed_version.stdout != pycharm_version

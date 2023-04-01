@@ -3,3 +3,5 @@ postman_name: Postman-linux-x64-latest.tar.gz
 aws_cli_name: awscliv2.zip
 terraform_name: terraform_{{ terraform_version }}_linux_amd64.zip
 skype_name: skypeforlinux-64.deb
+pycharm_version: "2023.1"
+pycharm_edition: "community"
