@@ -75,3 +75,7 @@ spotify_apt_key_url: "https://download.spotify.com/debian/pubkey_0D811D58.gpg"
 spotify_repository_url: "http://repository.spotify.com"
 spotify_repository_channel: "stable non-free"
 spotify_package_name: "spotify-client"
+
+# Slack
+# defaults file
+slack_version: 4.29.149
