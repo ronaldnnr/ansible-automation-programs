@@ -1,8 +1,8 @@
 ---
-- include: awscli.yml
-- include: chrome.yml
-- include: docker.yml
-- include: skype.yml
-- include: spotify.yml
-- include: terraform.yml
-- include: zsh.yml
+#- include_tasks: awscli.yml
+- include_tasks: chrome.yml
+- include_tasks: docker.yml
+- include_tasks: skype.yml
+- include_tasks: spotify.yml
+- include_tasks: terraform.yml
+- include_tasks: zsh.yml
