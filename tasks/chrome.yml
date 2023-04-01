@@ -1,5 +1,3 @@
----
-
 - name: Chrome - Add apt key (Ubuntu)
   shell: wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   when: ansible_distribution == 'Ubuntu'
@@ -12,6 +10,13 @@
     state: present
     update_cache: yes
   when: ansible_distribution == 'Ubuntu'
+
+- name: Chrome - Add GPG key (CentOS)
+  become: yes
+  ansible.builtin.rpm_key:
+    key: https://dl.google.com/linux/linux_signing_key.pub
+    state: present
+  when: ansible_distribution == 'CentOS'
 
 - name: Chrome - Add yum repository (CentOS)
   become: yes
