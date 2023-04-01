@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Variáveis
 APP_NAME="ansible-automation-programs"
 APP_DIR="/tmp/ansible"
 REPO_DIR="$APP_DIR/$APP_NAME"
@@ -40,7 +39,6 @@ run_ansible_playbook() {
   ansible-playbook -i $APP_DIR/hosts $APP_DIR/main.yml --extra-vars "usuario=$USER"
 }
 
-# Execução
 print_version
 update_packages
 install_ansible_and_git
