@@ -12,5 +12,5 @@
 
 - name: Spotify - Install.
   apt:
-    name: {{ spotify_package_name }}
+    name: "{{ spotify_package_name }}"
     state: present
