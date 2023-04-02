@@ -5,7 +5,10 @@
     dest: /tmp/spotify.gpg
     
 - name: Spotify - Add apt key.
-  shell: "sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg /tmp/spotify.gpg"
+  ansible.builtin.apt_key:
+    data: "{{ lookup('file', '/tmp/spotify.gpg') }}"
+    state: present
+
 
 
 - name: Spotify - Install repo.
