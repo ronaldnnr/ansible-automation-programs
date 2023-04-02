@@ -1,6 +1,6 @@
 ---
 - name: Spotify - Add apt key.
-  shell: "curl -sS {{ spotify_apt_key_url }} | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
+  shell: curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
 
 - name: Spotify - Install repo.
   become: yes
