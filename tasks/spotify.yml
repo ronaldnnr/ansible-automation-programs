@@ -1,10 +1,5 @@
 - name: Spotify - Add apt key.
-  copy:
-    src: "{{ playbook_dir }}/files/spotify.gpg"
-    dest: /etc/apt/trusted.gpg.d/spotify.gpg
-    owner: root
-    group: root
-    mode: 0775
+  command: "curl -sS {{ spotify_apt_key_url }} | gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
 
 - name: Spotify - Install repo.
   become: yes
