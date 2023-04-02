@@ -1,5 +1,5 @@
 - name: Spotify - Add apt key.
-  command: "curl -sS {{ spotify_apt_key_url }} | gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
+  shell: "curl -sS {{ spotify_apt_key_url }} | gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
 
 - name: Spotify - Install repo.
   become: yes
