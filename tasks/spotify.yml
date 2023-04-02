@@ -1,11 +1,6 @@
 ---
-#- name: Spotify - Add apt key.
-#  shell: curl -sS {{ spotify_apt_key_url }} | sudo apt-key add -
-
 - name: Spotify - Add apt key.
-  ansible.builtin.apt_key:
-    url: "{{ spotify_apt_key_url }}"
-    state: present
+  shell: "curl -sS {{ spotify_apt_key_url }} | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
 
 - name: Spotify - Install repo.
   become: yes
