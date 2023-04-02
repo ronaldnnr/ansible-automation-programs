@@ -1,16 +1,22 @@
----
+- name: Spotify - Download apt key.
+  get_url:
+    url: "{{ spotify_apt_key_url }}"
+    dest: /tmp/spotify.gpg
+
 - name: Spotify - Add apt key.
-  shell: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+  ansible.builtin.apt_key:
+    data: "{{ lookup('file', '/tmp/spotify.gpg') }}"
+    state: present
 
 - name: Spotify - Install repo.
   become: yes
   apt_repository:
-    repo: deb http://repository.spotify.com stable non-free
+    repo: deb {{ spotify_repository_url }} {{ spotify_repository_channel }}
     filename: spotify
     state: present
     update_cache: yes
 
 - name: Spotify - Install.
   apt:
-    name: spotify-client
+    name: "{{ spotify_package_name }}"
     state: present
