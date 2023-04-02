@@ -1,17 +1,14 @@
-- name: Spotify - Add apt key.
-  shell: "curl -sS {{ spotify_apt_key_url }} | gpg --dearmor -o /etc/apt/trusted.gpg.d/spotify.gpg"
-  args:
-    executable: /bin/bash
-
-- name: Spotify - Install repo.
-  become: yes
-  apt_repository:
-    repo: deb {{ spotify_repository_url }} {{ spotify_repository_channel }}
-    filename: spotify
-    state: present
-    update_cache: yes
-
-- name: Spotify - Install.
-  apt:
-    name: "{{ spotify_package_name }}"
-    state: present
+---
+- name: snap module demo
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: snapd present
+      ansible.builtin.apt:
+        name: snapd
+        state: present
+    - name: install Spotify via snap
+      community.general.snap:
+        name: spotify
+        state: present
