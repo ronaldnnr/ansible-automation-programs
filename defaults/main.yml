@@ -20,7 +20,6 @@ visual_studio_code_build: stable
 visual_studio_code_mirror: https://packages.microsoft.com
 
 # Docker
-# Docker
 docker_edition: ce
 docker_package: "docker-{{ docker_edition }}"
 docker_package_state: present
