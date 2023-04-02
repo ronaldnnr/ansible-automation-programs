@@ -1,14 +1,10 @@
 ---
-- name: snap module demo
-  hosts: all
-  become: true
-  gather_facts: false
-  tasks:
-    - name: snapd present
-      ansible.builtin.apt:
-        name: snapd
-        state: present
-    - name: install Spotify via snap
-      community.general.snap:
-        name: spotify
-        state: present
+- name: Ensure snapd is installed
+  ansible.builtin.apt:
+    name: snapd
+    state: present
+
+- name: Install Spotify via snap
+  community.general.snap:
+    name: spotify
+    state: present
