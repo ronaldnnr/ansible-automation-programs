@@ -8,13 +8,13 @@
 - name: AWSCli - Download.
   get_url:
     url: "{{ aws_cli_url_download }}"
-    dest: "{{ aws_cli_download_dir }}/{{ aws_cli_filename }}"
+    dest: "{{ aws_cli_download_dir }}/{{ aws_cli_name }}"
     mode: u=rw,go=r
 
 - name: AWSCli - Unzip.
   become: yes
   unarchive:
-    src: "{{ aws_cli_download_dir }}/{{ aws_cli_filename }}"
+    src: "{{ aws_cli_download_dir }}/{{ aws_cli_name }}"
     remote_src: yes
     dest: "{{ aws_cli_download_dir }}"
     owner: root
