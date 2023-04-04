@@ -1,0 +1,17 @@
+
+---
+- name: Skype - Create download directory.
+  file:
+    state: directory
+    mode: u=rwx,go=rx
+    dest: "{{ skype_download_dir }}"
+
+- name: Skype - Download.
+  get_url:
+    url: "{{ skype_url_download }}"
+    dest: "{{ skype_download_dir }}/{{ skype_filename }}"
+    mode: u=rw,go=r
+    
+- name: Skype - Install.
+  apt:
+    deb: "{{ skype_download_dir }}/{{ skype_filename }}"
