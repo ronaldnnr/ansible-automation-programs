@@ -10,3 +10,13 @@ slack_machine_map:
   i386: i386
   x86_64: amd64
   amd64: amd64
+visual_studio_code_config_dirname: "{{ (visual_studio_code_build == 'insiders') | ternary('Code - Insiders', 'Code') }}"
+visual_studio_code_config_path: "{{ (ansible_distribution == 'MacOSX') | ternary('Library/Application Support', '.config') }}/{{ visual_studio_code_config_dirname }}"
+visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
+visual_studio_code_exe: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
+visual_studio_code_deb_architecture_mapping:
+  armv6l: armhf
+  armv7l: armhf
+  aarch64: arm64
+visual_studio_code_deb_architecture: >-
+  {{ visual_studio_code_deb_architecture_mapping[ansible_architecture | lower] | default('amd64') }}
