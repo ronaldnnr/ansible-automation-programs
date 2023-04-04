@@ -1,9 +1,8 @@
 ---
 # Global
-#users: []
-usuario: []
+users: []
+usuario:
 distribution: focal
-
 
 # Terraform
 terraform_version: 1.4.4
