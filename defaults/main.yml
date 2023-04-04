@@ -3,14 +3,6 @@
 users: []
 usuario: 
 distribution: focal
-user:
-  - username: root
-    visual_studio_code_extensions:
-      - ms-python.python
-      - ms-vscode.cpptools
-  - username: another_user
-    visual_studio_code_extensions:
-      - ms-python.python
 
 
 # Terraform
