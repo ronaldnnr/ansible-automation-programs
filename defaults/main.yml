@@ -37,13 +37,13 @@ docker_gpg_key_url: https://download.docker.com/linux/ubuntu/gpg
 
 
 # AWS cli
-#aws_cli_download_dir: /tmp/awscli
-#aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-#aws_cli_home: "/home/{{ usuario }}"
-#aws_output_format: json
-#aws_region: us-east-1
-#aws_access_key_id:
-#aws_secret_access_key:
+aws_cli_download_dir: /tmp/awscli
+aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+aws_cli_home: "/home/{{ usuario }}"
+aws_output_format: json
+aws_region: sa-east-1
+aws_access_key_id:
+aws_secret_access_key:
 
 # Zsh
 oh_my_zsh_url_download: https://github.com/robbyrussell/oh-my-zsh
