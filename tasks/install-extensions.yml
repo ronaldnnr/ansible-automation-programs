@@ -6,7 +6,7 @@
     executable: '{{ visual_studio_code_exe }}'
     name: '{{ item.1 }}'
   with_subelements:
-    - '{{ user }}'
+    - '{{ users }}'
     - visual_studio_code_extensions
     - skip_missing: yes
   loop_control:
