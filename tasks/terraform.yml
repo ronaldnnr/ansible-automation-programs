@@ -20,6 +20,9 @@
     mode: u=rwx,go=rx
     dest: "{{ terraform_install_directory }}"
 
+- name: Install unzip
+  apt: pkg=unzip={{ unzip_version }} state=present
+
 - name: Terraform - Unzip.
   become: yes
   unarchive:
