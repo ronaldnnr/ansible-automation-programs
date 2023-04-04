@@ -82,3 +82,5 @@ skype_download_dir: /tmp/skype
 # Slack
 # defaults file
 slack_version: 4.29.149
+# Unzip
+unzip_version: "6.0*"
