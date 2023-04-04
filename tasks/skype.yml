@@ -9,9 +9,9 @@
 - name: Skype - Download.
   get_url:
     url: "{{ skype_url_down }}"
-    dest: "{{ skype_download_dir }}/{{ skype_filename }}"
+    dest: "{{ skype_download_dir }}/{{ skype_name }}"
     mode: u=rw,go=r
     
 - name: Skype - Install.
   apt:
-    deb: "{{ skype_download_dir }}/{{ skype_filename }}"
+    deb: "{{ skype_download_dir }}/{{ skype_name }}"
