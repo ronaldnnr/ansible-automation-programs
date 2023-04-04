@@ -9,7 +9,7 @@
 - include_tasks: zsh.yml
 - include_tasks: slack.yml
 - include_tasks: vscode.yml
-#- include_tasks: install-extensions.yml
+- include_tasks: install-extensions.yml
 
 #Environment MacOs
 #- include_tasks: terraform-macos.yml
