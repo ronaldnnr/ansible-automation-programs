@@ -8,7 +8,7 @@
 
 - name: Skype - Download.
   get_url:
-    url: "{{ skype_url_download }}"
+    url: "{{ skype_url_down }}"
     dest: "{{ skype_download_dir }}/{{ skype_filename }}"
     mode: u=rw,go=r
     
