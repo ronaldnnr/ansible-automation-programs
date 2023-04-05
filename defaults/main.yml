@@ -10,11 +10,6 @@ terraform_url_down: "https://releases.hashicorp.com/terraform/{{ terraform_versi
 terraform_install_directory: /usr/local/bin/
 terraform_down_dir: /tmp/terraform
 
-# Postman
-postman_url_download: https://dl.pstmn.io/download/latest/linux64
-postman_install_dir: /opt/Postman
-postman_download_dir: /tmp/Postman
-
 # Vscode
 visual_studio_code_version: ''
 visual_studio_code_build: stable
@@ -88,3 +83,9 @@ skype_download_dir: /tmp/skype
 slack_version: 4.29.149
 # Unzip
 unzip_version: "6.0*"
+
+
+# Postman
+postman_url_download: https://dl.pstmn.io/download/latest/linux64
+postman_install_dir: /opt/Postman
+postman_download_dir: /tmp/Postman

@@ -20,5 +20,5 @@ visual_studio_code_deb_architecture_mapping:
   aarch64: arm64
 visual_studio_code_deb_architecture: >-
   {{ visual_studio_code_deb_architecture_mapping[ansible_architecture | lower] | default('amd64') }}
-
-pycharm_downloads_path: /var/lib/ansible/pycharm/downloads
+  
+postman_filename: Postman-linux-x64-latest.tar.gz
