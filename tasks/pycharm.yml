@@ -1,51 +1,33 @@
----
-- name: create (download) directory
+
+- name: install tar on Fedora 24
+  dnf:
+    name: tar
+    state: present
+  when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "24"
+
+- name: Create directories for PyCharm
   file:
-    path: "{{ pycharm_downloads_path }}"
+    path: "{{ item }}"
     state: directory
-    owner: root
-    group: root
-    mode: 0755
-  tags:
-    - configuration
-    - pycharm
-    - pycharm-download
+  with_items:
+  - "{{ pycharm_download_directory }}"
+  - "{{ pycharm_install_directory }}"
+  - "{{ pycharm_desktop_file_location | dirname }}"
 
-- name: download
-  get_url:
-    url: "{{ pycharm_download_url }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"
-    dest: "{{ pycharm_downloads_path }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"
-    owner: root
-    group: root
-    mode: 0644
-  tags:
-    - configuration
-    - pycharm
-    - pycharm-download
+- name: Install PyCharm
+  unarchive:
+    copy: no
+    src: "{{ pycharm_download_url}}"
+    dest: "{{ pycharm_install_directory }}"
+    creates: "{{pycharm_location }}/bin/pycharm.sh"
 
-- block:
+- name: Install PyCharm Plugins
+  unarchive:
+    src: "{{ item.dest }}"
+    dest: "{{ pycharm_location }}/plugins"
+  with_items: "{{ pycharm_plugins_downloaded.results }}"
 
-    - name: install | old
-      unarchive:
-        src: "{{ pycharm_downloads_path }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"
-        dest: "{{ pycharm_install_prefix }}"
-        creates: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_version }}"
-        copy: false
-      when: pycharm_version is version('2016.1.0', '<')
-      tags:
-        - pycharm-install-old
-
-    - name: install | new
-      unarchive:
-        src: "{{ pycharm_downloads_path }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"
-        dest: "{{ pycharm_install_prefix }}"
-        creates: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}"
-        copy: false
-      when: pycharm_version is version('2016.1.0', '>=')
-      tags:
-        - pycharm-install-new
-
-  tags:
-    - configuration
-    - pycharm
-    - pycharm-install
+- name: Create PyCharm Community Edition desktop entry
+  template:
+    src: pycharm.desktop.j2
+    dest: "{{ pycharm_desktop_file_location }}"
