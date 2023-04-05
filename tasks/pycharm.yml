@@ -1,33 +1,42 @@
+---
+- name: Define PyCharm Community version and download URL
+  set_fact:
+    pycharm_version: "2023.1"
+    pycharm_download_url: "https://download.jetbrains.com/python/pycharm-community-{{ pycharm_version }}.tar.gz"
+    pycharm_install_dir: "/opt/pycharm-community"
+    pycharm_executable_path: "/usr/local/bin/pycharm-community"
 
-- name: install tar on Fedora 24
-  dnf:
-    name: tar
-    state: present
-  when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "24"
+- name: Download PyCharm Community
+  get_url:
+    url: "{{ pycharm_download_url }}"
+    dest: "/tmp/pycharm-community-{{ pycharm_version }}.tar.gz"
+    mode: "u=rw,g=r,o=r"
 
-- name: Create directories for PyCharm
+- name: Create PyCharm Community installation directory
   file:
-    path: "{{ item }}"
+    path: "{{ pycharm_install_dir }}"
     state: directory
-  with_items:
-  - "{{ pycharm_download_directory }}"
-  - "{{ pycharm_install_directory }}"
-  - "{{ pycharm_desktop_file_location | dirname }}"
+    mode: "u=rwx,g=rx,o=rx"
 
-- name: Install PyCharm
+- name: Unarchive PyCharm Community
   unarchive:
-    copy: no
-    src: "{{ pycharm_download_url}}"
-    dest: "{{ pycharm_install_directory }}"
-    creates: "{{pycharm_location }}/bin/pycharm.sh"
+    src: "/tmp/pycharm-community-{{ pycharm_version }}.tar.gz"
+    dest: "{{ pycharm_install_dir }}"
+    remote_src: yes
+    extra_opts: [--strip-components=1]
 
-- name: Install PyCharm Plugins
-  unarchive:
-    src: "{{ item.dest }}"
-    dest: "{{ pycharm_location }}/plugins"
-  with_items: "{{ pycharm_plugins_downloaded.results }}"
+- name: Create PyCharm Community symbolic link
+  file:
+    src: "{{ pycharm_install_dir }}/bin/pycharm.sh"
+    dest: "{{ pycharm_executable_path }}"
+    state: link
+    mode: "u=rwx,g=rx,o=rx"
 
-- name: Create PyCharm Community Edition desktop entry
-  template:
-    src: pycharm.desktop.j2
-    dest: "{{ pycharm_desktop_file_location }}"
+# Optional: If you have custom configuration settings to apply
+- name: Copy PyCharm Community configuration settings
+  copy:
+    src: "/path/to/your/custom/settings.zip"
+    dest: "{{ ansible_env.HOME }}/.config/JetBrains/PyCharmCE{{ pycharm_version }}/settings.zip"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "u=rw,g=r,o=r"

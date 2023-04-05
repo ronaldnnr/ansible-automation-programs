@@ -88,18 +88,3 @@ skype_download_dir: /tmp/skype
 slack_version: 4.29.149
 # Unzip
 unzip_version: "6.0*"
-
-#PyCharm
-pycharm_version: 2023.1
-pycharm_edition: community
-pycharm_download_mirror: 'https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC'
-pycharm_download_directory: /tmp
-pycharm_user_dir: "~{{ (pycharm_install_user is defined) | ternary(pycharm_install_user, ansible_user_id) }}"
-pycharm_install_directory: "{{ pycharm_user_dir | expanduser }}/Tools"
-
-# calculated
-
-pycharm_install_file: "pycharm-{{ pycharm_edition}}-{{ pycharm_version }}.tar.gz"
-pycharm_download_url: "{{ pycharm_download_mirror }}{{ pycharm_install_file }}"
-pycharm_location: "{{ pycharm_install_directory }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}"
-pycharm_desktop_file_location: "{{ pycharm_user_dir | expanduser }}/.local/share/applications/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.desktop"
