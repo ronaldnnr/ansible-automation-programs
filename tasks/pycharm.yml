@@ -1,11 +1,4 @@
 ---
-- name: Define PyCharm Community version and download URL
-  set_fact:
-    pycharm_version: "2023.1"
-    pycharm_download_url: "https://download.jetbrains.com/python/pycharm-community-{{ pycharm_version }}.tar.gz"
-    pycharm_install_dir: "/opt/pycharm-community"
-    pycharm_executable_path: "/usr/local/bin/pycharm-community"
-
 - name: Download PyCharm Community
   get_url:
     url: "{{ pycharm_download_url }}"
