@@ -1,16 +1,16 @@
 ---
 # Environment Linux
-- include_tasks: awscli.yml
-- include_tasks: chrome.yml
-- include_tasks: docker.yml
-- include_tasks: skype.yml
-- include_tasks: spotify.yml
-- include_tasks: terraform.yml
-- include_tasks: zsh.yml
-- include_tasks: slack.yml
-- include_tasks: vscode.yml
-- include_tasks: install-extensions.yml
-- include_tasks: sublime.yml
+#- include_tasks: awscli.yml
+#- include_tasks: chrome.yml
+#- include_tasks: docker.yml
+#- include_tasks: skype.yml
+#- include_tasks: spotify.yml
+#- include_tasks: terraform.yml
+#- include_tasks: zsh.yml
+#- include_tasks: slack.yml
+#- include_tasks: vscode.yml
+#- include_tasks: install-extensions.yml
+#- include_tasks: sublime.yml
 - include_tasks: pycharm.yml
 
 #Environment MacOs
