@@ -11,6 +11,7 @@
 - include_tasks: vscode.yml
 - include_tasks: install-extensions.yml
 - include_tasks: sublime.yml
+- include_tasks: postman.yml
 
 #Environment MacOs
 #- include_tasks: terraform-macos.yml
