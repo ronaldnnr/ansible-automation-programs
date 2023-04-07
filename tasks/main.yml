@@ -1,5 +1,6 @@
 ---
 # Environment Linux
+- include_tasks: util.yml
 - include_tasks: chrome.yml
 - include_tasks: docker.yml
 - include_tasks: skype.yml

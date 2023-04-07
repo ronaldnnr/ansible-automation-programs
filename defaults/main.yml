@@ -89,3 +89,41 @@ unzip_version: "6.0*"
 postman_url_download: https://dl.pstmn.io/download/latest/linux64
 postman_install_dir: /opt/Postman
 postman_download_dir: /tmp/Postman
+
+#Commons
+
+---
+# defaults/main.yml
+
+common_packages:
+  - apt-transport-https
+  - software-properties-common
+  - curl
+  - wget
+  - git
+  - rdesktop
+  - tree
+  - gnome-tweaks
+  - net-tools
+  - vim
+  - screen
+  - nmap
+  - whois
+  - unzip
+  - snapd
+  - make
+  - jq
+  - network-manager-l2tp
+  - network-manager-l2tp-gnome
+  - sshpass
+
+vscode_dependencies:
+  - ca-certificates
+  - gconf2
+  - libasound2
+  - libgtk2.0-0
+  - libxss1
+
+docker_dependencies:
+  - gnupg2
+  - gnupg-agent

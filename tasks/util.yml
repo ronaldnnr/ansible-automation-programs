@@ -1,0 +1,28 @@
+---
+- name: Utilities - Update apt-get repo and cache.
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Utilities - Upgrade apt-get all packages.
+  apt:
+    name: "*"
+    state: latest
+
+- name: Utilities - Install common packages.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ common_packages }}"
+
+- name: Utilities - Install dependencies for vscode.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ vscode_dependencies }}"
+
+- name: Utilities - Install dependencies for docker.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ docker_dependencies }}"
