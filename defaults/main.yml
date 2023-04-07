@@ -91,10 +91,6 @@ postman_install_dir: /opt/Postman
 postman_download_dir: /tmp/Postman
 
 #Commons
-
----
-# defaults/main.yml
-
 common_packages:
   - apt-transport-https
   - software-properties-common
