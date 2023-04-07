@@ -15,5 +15,5 @@
 - include_tasks: postman.yml
 
 #Environment MacOs
-#- include_tasks: terraform-macos.yml
+- include_tasks: terraform-macos.yml
 #- include_tasks? vscode-macos.yml
